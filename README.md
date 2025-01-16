@@ -1,3 +1,7 @@
+## Login Credentials
+email = admin@example.com <br/>
+password = Admin@123
+
 # NdegwaInsurance
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
