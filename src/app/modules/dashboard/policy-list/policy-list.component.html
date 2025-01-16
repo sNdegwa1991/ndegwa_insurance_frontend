@@ -1,0 +1,59 @@
+<div class="policy-container">
+    <header class="header">
+      <h1>Insurance Policies</h1>
+      <div class="header-actions">
+        <button class="add-button" (click)="postPloicy()" >
+          Add New Policy
+        </button>
+        <button class="logout-button" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </header>
+  
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  
+    <div class="loading-spinner" *ngIf="loading">
+      Loading...
+    </div>
+  
+    <div class="table-container" *ngIf="!loading">
+      <table *ngIf="policies.length > 0">
+        <thead>
+          <tr>
+            <th>Policy Number</th>
+            <th>Type</th>
+            <th>Policy Holder</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Premium</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of policies">
+            <td>{{policy.policyNumber}}</td>
+            <td>{{policy.policyType}}</td>
+            <td>{{policy.policyHolderName}}</td>
+            <td>{{policy.startDate | date}}</td>
+            <td>{{policy.endDate | date}}</td>
+            <td>{{policy.premium | currency : 'KES'}}</td>
+            <td class="actions">
+              <button class="edit-button" (click)="editPolicy(policy.id)">
+                Edit
+              </button>
+              <button class="delete-button" (click)="deletePolicy(policy.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="no-policies" *ngIf="policies.length === 0">
+        No policies found. Click "Add New Policy" to create one.
+      </div>
+    </div>
+  </div>
